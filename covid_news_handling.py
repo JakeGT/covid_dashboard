@@ -170,7 +170,7 @@ def schedule_news_updates(update_interval: int|str|datetime.datetime,
             time_to_update, update_time = time_to_update_interval(update_interval)
             logging.debug("time_to_update = %s", str(time_to_update))
             logging.debug("update_time = %s", str(update_time))
-        elif match("[0-9]+", update_interval):
+        elif update_interval.isdigit():
             update_interval = int(update_interval)
             # this will trigger the if statement below for int types
         else:
