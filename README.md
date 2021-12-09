@@ -11,9 +11,9 @@ Flask<br>
 pytest
 
 # Installation
-uk_covid19: pip install uk_covid19
-Flask: pip install flask
-pytest: pip install pytest
+uk_covid19: pip install uk_covid19<br>
+Flask: pip install flask<br>
+pytest: pip install pytest<br>
 
 # How to use
 
