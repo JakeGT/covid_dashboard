@@ -4,9 +4,9 @@ This is the COVID Dashboard created by Jake Talling for his Uni Coursework
 The app will display information about the latest covid statistics and covid news and allow you to specify specific times to update the data on the app. All of which is done through the web interface.
 
 # Prerequesits
-Python 3.10
-uk_covid19
-Flask
+Python 3.10<br>
+uk_covid19<br>
+Flask<br>
 #### For unit testing
 pytest
 
