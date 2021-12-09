@@ -22,12 +22,12 @@ First, open the config.json in your preferred text editor.
 (Optional from here)
 2. Add/modify the terms to search for in your news feed (covid_terms)
 3. Modify the area_name to your location. If you wish to change the scope of your local area, you can change the area_type to the following:
-overview: Data for all of the UK
-nation: Either England, NI, Scotland or Wales
-region: Regional
-nhsRegion: NHS regional
-utla: Upper-tier local authority
-ltla: Lower-tier local authority
+ - overview: Data for all of the UK
+ - nation: Either England, NI, Scotland or Wales
+ - region: Regional
+ - nhsRegion: NHS regional
+ - utla: Upper-tier local authority
+ - ltla: Lower-tier local authority
 
 Next, you can run the application by opening covid_dashboard.py
 To access the dashboard, open the following link in your browser: 127.0.0.1:5000
