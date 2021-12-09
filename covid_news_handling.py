@@ -1,16 +1,7 @@
 '''
-NAME
-    covid_news_handling - Handles news API calls and scheduling
+This function handles news API requests, scheduling news updates
+and formatting the news for the covid dashboard to display to the user.
 
-FUNCTIONS
-    news_API_request: Makes an API request and loads the data
-    update_news: Calls news_API_request and updates articles data
-    news_formatter: Generates a list of title and article dictionaries
-    add_removed_articles: Called when a user removes an article: needs to be remembered
-    sch_update_news: Scheduler calls this function during scheduled update
-    cancel_scheduled_update: Removes scheduled update from queue
-    schedule_news_updates: Adds events to scheduler queue
-    time_to_update_interval: Takes str to create datetime object and time in seconds to update
 '''
 import time
 import sched
@@ -167,6 +158,7 @@ def schedule_news_updates(update_interval: int|str|datetime.datetime,
                 if int, time to update in seconds
                 if str, time of next update in the format HH:MM
                 if datetime.datetime, the datetime of next update
+
             update_name (str): the name of the scheduled update
             repeat (bool): whether the update is repeating
     '''
@@ -174,7 +166,7 @@ def schedule_news_updates(update_interval: int|str|datetime.datetime,
     if isinstance(update_interval, str):
         logging.info("Recieved string. Attempting to parse...")
         # if it's a string, test if its coming from the dashboard and therefore HH:MM format
-        if match("[0-9]{2}:[0-9]{}2", update_interval):
+        if match("^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$", update_interval):
             time_to_update, update_time = time_to_update_interval(update_interval)
             logging.debug("time_to_update = %s", str(time_to_update))
             logging.debug("update_time = %s", str(update_time))

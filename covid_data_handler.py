@@ -1,16 +1,6 @@
 '''
-NAME
-    covid_data_handler - Process data taken from Covid API
-
-FUNCTIONS
-    parse_csv_data: Parses the CSV file provided to return a list of columns
-    convert_covid_csv_data_to_list_dict: Takes from parse_csv_data and formats for processing
-    process_covid_csv_data: Takes the covid data and generates the 3 key statistics
-
-    covid_API_request: Makes an API request to get most recent Covid Data
-    update_covd_data: Updates the covid data using the API call function
-    cancel_scheduled_update: Removes a scheduled update from
-    schedule_covid_update
+This module handles the covid API, covid data, key statistics calculations and
+scheduling covid updates.
 
 '''
 import logging
@@ -74,17 +64,16 @@ def parse_csv_data(filename:str) -> list[str]:
 def convert_covid_csv_data_to_list_dict(covid_csv_data:list[str]) -> list[dict]:
     '''
     Takes the parsed csv covid data and split rows into lists appendding each row to a new list
-    This function is only necessary when reading from a CSV. This is completely unecessary for
-    use with the API........... 😐. Basically, the function turns the CSV file into the same
-    data structure that is returned from the API
+    This function is only necessary when reading from a CSV. The function turns the CSV file into
+    the same data structure that is returned from the API.
 
         Parameters:
             covid_csv_data (list[str]): Covid data parsed through the function parse_csv_data
-                the data is each row of data as a string of the entire row
+            the data is each row of data as a string of the entire row
 
         Returns:
             covid_data_local (list[dict]): Covid data seperated in list by row and
-                converted to a dictionary
+            converted to a dictionary
     '''
     logging.info("""convert_covid_csv_data_to_list_dict called:
     Converting CSV file to list of dictionaries for further data processing.""")
@@ -168,7 +157,7 @@ def covid_API_request(location:str = "Exeter", location_type:str = "ltla") -> di
         Parameters:
             location (str): The location for information to be request about, default=Exeter
             location_type (str): The type of location, default=ltla (Lower-tier local
-                authority data)
+            authority data)
 
          Returns:
             data (dict): The data the API returns based on the filter and structure provided
@@ -273,6 +262,7 @@ def schedule_covid_updates(update_interval: int|str|datetime.datetime,
                 if int, time to update in seconds
                 if str, time of next update in the format HH:MM
                 if datetime.datetime, the datetime of next update
+
             update_name (str): the name of the scheduled update
             repeat (bool): whether the update is repeating
     '''
@@ -280,7 +270,7 @@ def schedule_covid_updates(update_interval: int|str|datetime.datetime,
     if isinstance(update_interval, str):
         logging.info("Recieved string. Attempting to parse...")
         # if it's a string, test if its coming from the dashboard and therefore HH:MM format
-        if match("[0-9]{2}:[0-9]{}2", update_interval):
+        if match("^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$", update_interval):
             time_to_update, update_time = time_to_update_interval(update_interval)
             logging.debug("time_to_update = %s", str(time_to_update))
             logging.debug("update_time = %s", str(update_time))
