@@ -1,0 +1,10 @@
+{
+    "news": {
+        "covid_terms": "Covid COVID-19 coronavirus",
+        "api_key": "9b0d5fea6cca4781912d218f2ab8c12d"
+    },
+    "covid": {
+        "area_type":"ltla",
+        "area_name":"Exeter"
+    }
+}
