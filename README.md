@@ -29,15 +29,15 @@ First, open the config.json in your preferred text editor.
  - utla: Upper-tier local authority
  - ltla: Lower-tier local authority
 
-Next, you can run the application by opening covid_dashboard.py
+Next, you can run the application by opening covid_dashboard.py <br>
 To access the dashboard, open the following link in your browser: 127.0.0.1:5000
 
 On the left, you can see scheduled updates. This should be empty as you have not scheduled any updates. This will update accordingly as you add updates to the app.
 
 On the right, you can see your news feed. This will have the latest news searched with the terms you entered earlier in the config file. If you wish to remove a news article, click the X. It will not appear again.
 
-If you wish to scheduled an update, you can use the data entry fields in the middle of the page. Enter a name and time, select what you would like to update (covid data and/or news) and whether you would like the update to repeat once a day at the same time. Once filled in, hit the submit button.
-You cannot schedule an update with the same title and time as another update. You will not be informed if your update has been rejected.
+If you wish to scheduled an update, you can use the data entry fields in the middle of the page. Enter a name and time, select what you would like to update (covid data and/or news) and whether you would like the update to repeat once a day at the same time. Once filled in, hit the submit button.<br>
+You cannot schedule an update with the same title and time as another update. You will not be informed if your update has been rejected.<br>
 If you would like to cancel an update, you can click the x in the scheduled updates on the left side of the screen of the update you would like to cancel.
 
 # Testing
