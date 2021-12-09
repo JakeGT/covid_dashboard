@@ -62,6 +62,10 @@ def test_schedule_covid_updates():
     cdh.schedule_covid_updates(update_interval="bad", update_name="bad_string")
     assert len(cdh.scheduler.queue) == 4 # should exit out of function
     
+    # test for HH:MM format
+    cdh.schedule_covid_updates(update_interval="12:34", update_name="HH:MM")
+    assert len(cdh.scheduler.queue) == 5
+    
     
 def test_cancel_scheduled_update():
     # test intended functionality

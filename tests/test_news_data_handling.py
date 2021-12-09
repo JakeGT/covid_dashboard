@@ -50,6 +50,10 @@ def test_schedule_news_updates():
     cnh.schedule_news_updates(update_interval="bad", update_name="bad_string")
     assert len(cnh.scheduler.queue) == 4 # should exit out of function
     
+    # test for HH:MM format
+    cnh.schedule_news_updates(update_interval="12:34", update_name="HH:MM")
+    assert len(cnh.scheduler.queue) == 5
+    
 def test_cancel_scheduled_update():
     # test intended functionality
     len_of_queue = len(cnh.scheduler.queue)
