@@ -44,6 +44,9 @@ If you would like to cancel an update, you can click the x in the scheduled upda
 If you would like to ensure all of the code functions properly in your environment, run the pytest module as such: open terminal and CD into the directory containing the covid_dashboard.py file. Run the following:
 pytest tests/
 
+# For Developers
+If you wish to modify or extend this code in anyways, please refer to the docstrings within the code and the inline comments to assist in understanding the functionality of the code. Docstrings include parameters and returns and descriptions for all of them.
+
 # Author
 Jake George Talling
 github.com/JakeGT

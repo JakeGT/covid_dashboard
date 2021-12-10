@@ -1,13 +1,7 @@
 '''
-NAME
-    covid_dashboard
-
-FUNCTIONS
-    home(): Main function that runs when accessing the dashboard
-    collate_update_lists():  Merges the two scheduled updates list from covid news and data
-    format_update_toasts(): Generates and returns a list containing the scheduled updates
-    data_init(): Loads data from APIs
-    load_config(str): Loads config file and sets correct variables accordingly
+This is the main python file that is run. This uses flask to run the covid dashboard
+loading data from the 2 modules covid_data_handler and covid_news_handling.
+It has some of it's own functions to better display data and to access the config file.
 '''
 
 import logging
@@ -81,11 +75,12 @@ def home():
     if remove_scheduled_update:
         logging.info("User has requested to removed a scheduled update.")
         logging.debug("removed_scheduled_update = %s", remove_scheduled_update)
-        update = scheduled_updates[remove_scheduled_update]
-        if update["news"]:
-            cnh.cancel_scheduled_update(remove_scheduled_update)
-        if update["covid"]:
-            cdh.cancel_scheduled_update(remove_scheduled_update)
+        if remove_scheduled_update in scheduled_updates:
+            update = scheduled_updates[remove_scheduled_update]
+            if update["news"]:
+                cnh.cancel_scheduled_update(remove_scheduled_update)
+            if update["covid"]:
+                cdh.cancel_scheduled_update(remove_scheduled_update)
 
     if remove_news_notif:
         logging.info("User has request article be removed")
@@ -106,7 +101,8 @@ def home():
         hospital_cases = hospital_cases,
         deaths_total = deaths_total,
         news_articles = cnh.formatted_news,
-        updates = updates
+        updates = updates,
+        image = "covid-19.png"
     )
 
 def collate_update_lists() -> None:
